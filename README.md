@@ -1,16 +1,11 @@
 # Mobile Contacts Library
 
-This application demonstrates the "MobileContactsLib", The library uses the "ContentResolver", it is a well structured, fast, easy to use and easy to modify library for getting contacts from the mobile. This library requires minimum SDK 15.
+This application demonstrates the "MobileContactsLib", The library uses the "ContentResolver", it is a well structured, fast, easy to use and easy to modify library for getting contacts from the mobile. This library requires minimum SDK 16.
 
 Images from the app:
 
 <img src="https://github.com/Jagerfield/Mobile-Contacts-Library/blob/master/Snapshots/Screenshot_ContactList.png" width="240"/> &#160;
 <img src="https://github.com/Jagerfield/Mobile-Contacts-Library/blob/master/Snapshots/Screenshot_ContactDetails.png" width="240"/>
-
-
-The demo app for this library is available on Google Play:
-
-<a href='https://play.google.com/store/apps/details?id=jagerfield.mobilecontactslibrary'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="150" height="60"/></a>
 
 
 ## Installation
@@ -54,7 +49,7 @@ There are two ways to implement this library, the first method is to directly im
      */
       ArrayList<Contact> listItem = importContacts.getContacts();   
   ```
-From version 1.7, you can fetch contacts through an Async call.
+From version v1.8, you can fetch contacts through an Async call.
   
   ```
     new ImportContactsAsync(activity, new ImportContactsAsync.ICallback()
@@ -103,11 +98,6 @@ From version 1.7, you can fetch contacts through an Async call.
 This is a general diagram of the library's architectural design, and it only includes the numbers elements for clarity. 
 
 <img src="https://github.com/Jagerfield/Mobile-Contacts-Library/blob/master/Snapshots/ContactLib_UML.PNG" width="650">
-
-## Apps using the library
- A version of this library is used in **Data & Contacts Sharing Mgr**
-
-<a href='https://play.google.com/store/apps/details?id=jagerfield.dcm'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width="150" height="60"/></a>
 
 The **Mobile Contact Library** uses the **Android Utilities Library** to manage permissions:
 
