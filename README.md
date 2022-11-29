@@ -34,7 +34,7 @@ In the app build.gradle add the following:
  
 ```
     dependencies {
-	        compile 'com.github.Jagerfield:Mobile-Contacts-Library:v1.7'
+	        compile 'com.github.Jagerfield:Mobile-Contacts-Library:latest_release' //Check release section for latest version
 	}
 ```
 
