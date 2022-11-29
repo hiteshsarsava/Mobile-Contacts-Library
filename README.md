@@ -29,9 +29,12 @@ In the app build.gradle add the following:
  
 ```
     dependencies {
-	        compile 'com.github.Jagerfield:Mobile-Contacts-Library:latest_release' //Check release section for latest version
+	    implementation  "com.github.Jagerfield:Mobile-Contacts-Library:latest_version" //Check release section for latest version
 	}
 ```
+
+#Latest version
+[![](https://jitpack.io/v/hiteshsarsava/Mobile-Contacts-Library.svg)](https://jitpack.io/#hiteshsarsava/Mobile-Contacts-Library)
 
 ## How to use?
 There are two ways to implement this library, the first method is to directly implement it on the main-thread. The library is fast and I didn't ntice any delays.
