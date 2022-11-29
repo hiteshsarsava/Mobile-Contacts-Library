@@ -2,34 +2,33 @@ package jagerfield.mobilecontactslibrary.ElementContainers;
 
 import android.database.Cursor;
 
+import com.google.gson.annotations.Expose;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import jagerfield.mobilecontactslibrary.FieldElements.EmailElements.EmailElement;
 import jagerfield.mobilecontactslibrary.FieldElements.EmailElements.EmailLabelElement;
 import jagerfield.mobilecontactslibrary.FieldElements.EmailElements.EmailTypeElement;
 import jagerfield.mobilecontactslibrary.Utilities.Utilities;
-import com.google.gson.annotations.Expose;
-import java.util.HashSet;
-import java.util.Set;
 
-public class EmailContainer
-{
-    private transient Cursor cursor;
+public class EmailContainer {
+    private final transient Cursor cursor;
     @Expose
-    private EmailElement email;
+    private final EmailElement email;
     @Expose
-    private EmailTypeElement emailType;
+    private final EmailTypeElement emailType;
     @Expose
-    private EmailLabelElement emailLabel;
+    private final EmailLabelElement emailLabel;
 
-    public EmailContainer(Cursor cursor)
-    {
+    public EmailContainer(Cursor cursor) {
         this.cursor = cursor;
         email = new EmailElement(cursor);
         emailType = new EmailTypeElement(cursor);
         emailLabel = new EmailLabelElement(cursor);
     }
 
-    public static Set<String> getFieldColumns()
-    {
+    public static Set<String> getFieldColumns() {
         Set<String> columns = new HashSet<>();
         columns.add(EmailElement.column);
         columns.add(EmailTypeElement.column);
@@ -37,17 +36,15 @@ public class EmailContainer
         return columns;
     }
 
-    public String getEmail()
-    {
-        String result = Utilities.elementValue(email);
-        return result;
+    public String getEmail() {
+        return Utilities.elementValue(email);
     }
+
     public String getEmailType() {
-        String result = Utilities.elementValue(emailType);
-        return result;
+        return Utilities.elementValue(emailType);
     }
+
     public String getEmailLabel() {
-        String result = Utilities.elementValue(emailLabel);
-        return result;
+        return Utilities.elementValue(emailLabel);
     }
 }

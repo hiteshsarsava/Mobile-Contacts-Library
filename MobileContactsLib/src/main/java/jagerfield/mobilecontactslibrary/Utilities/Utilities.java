@@ -10,7 +10,7 @@ public class Utilities
 
     public static String getColumnIndex(Cursor c, String column)
     {
-        String result = "";
+        String result;
         int index = c.getColumnIndex(column);
         if (index == -1)
         {
@@ -26,7 +26,7 @@ public class Utilities
 
     public static Long getLong(Cursor c, String column)
     {
-        Long result = null;
+        Long result;
         int index = c.getColumnIndex(column);
 
         if (index == -1)
@@ -43,7 +43,7 @@ public class Utilities
 
     public static String getNumberType(String type)
     {
-        int value =99;
+        int value;
 
         try
         {
@@ -105,7 +105,7 @@ public class Utilities
 
     public static String getEventType(String type)
     {
-        int value =99;
+        int value;
 
         try
         {
@@ -122,10 +122,9 @@ public class Utilities
                 return "CUSTOM";
             case ContactsContract.CommonDataKinds.Event.TYPE_ANNIVERSARY:
                 return "ANNIVERSARY";
-            case ContactsContract.CommonDataKinds.Event.TYPE_OTHER:
-                return "OTHER";
             case ContactsContract.CommonDataKinds.Event.TYPE_BIRTHDAY:
                 return "BIRTHDAY";
+            case ContactsContract.CommonDataKinds.Event.TYPE_OTHER:
             default:
                 return "OTHER";
         }
@@ -133,7 +132,7 @@ public class Utilities
 
     public static  String getNickNameType(String type)
     {
-        int value =99;
+        int value;
 
         try
         {
@@ -146,18 +145,18 @@ public class Utilities
 
         switch (value)
         {
-            case ContactsContract.CommonDataKinds.Nickname.TYPE_DEFAULT: return "DEFAULT";
             case ContactsContract.CommonDataKinds.Nickname.TYPE_OTHER_NAME: return "OTHERNAME";
             case ContactsContract.CommonDataKinds.Nickname.TYPE_MAIDEN_NAME: return "MAIDENNAME";
             case ContactsContract.CommonDataKinds.Nickname.TYPE_SHORT_NAME: return "SHORTNAME";
             case ContactsContract.CommonDataKinds.Nickname.TYPE_INITIALS: return "INITIALS";
+            case ContactsContract.CommonDataKinds.Nickname.TYPE_DEFAULT:
             default: return "DEFAULT";
         }
     }
 
     public static  String getAddressType(String type)
     {
-        int value =99;
+        int value;
 
         try
         {
@@ -173,14 +172,14 @@ public class Utilities
             case ContactsContract.CommonDataKinds.StructuredPostal.TYPE_CUSTOM: return "CUSTOME";
             case ContactsContract.CommonDataKinds.StructuredPostal.TYPE_HOME: return "HOME";
             case ContactsContract.CommonDataKinds.StructuredPostal.TYPE_WORK: return "WORK";
-            case ContactsContract.CommonDataKinds.StructuredPostal.TYPE_OTHER: return "OTHER";
+            case ContactsContract.CommonDataKinds.StructuredPostal.TYPE_OTHER:
             default: return "OTHER";
         }
     }
 
     public static  String getEmailType(String type)
     {
-        int value =99;
+        int value;
 
         try
         {
@@ -196,8 +195,8 @@ public class Utilities
             case ContactsContract.CommonDataKinds.Email.TYPE_CUSTOM: return "CUSTOME";
             case ContactsContract.CommonDataKinds.Email.TYPE_HOME: return "HOME";
             case ContactsContract.CommonDataKinds.Email.TYPE_WORK: return "WORK";
-            case ContactsContract.CommonDataKinds.Email.TYPE_OTHER: return "OTHER";
             case ContactsContract.CommonDataKinds.Email.TYPE_MOBILE: return "MOBILE";
+            case ContactsContract.CommonDataKinds.Email.TYPE_OTHER:
             default: return "OTHER";
         }
     }

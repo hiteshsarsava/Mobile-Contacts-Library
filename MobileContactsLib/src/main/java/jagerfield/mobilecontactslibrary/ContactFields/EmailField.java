@@ -13,7 +13,7 @@ public class EmailField extends FieldParent
 {
     public final String fieldMime = ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE;
     @Expose
-    private LinkedList<EmailContainer> emails = new LinkedList<>();
+    private final LinkedList<EmailContainer> emails = new LinkedList<>();
 
     public EmailField()
     {
@@ -43,7 +43,7 @@ public class EmailField extends FieldParent
 
     public interface IEmailField
     {
-        public LinkedList<EmailContainer> getEmails();
+        LinkedList<EmailContainer> getEmails();
     }
 
 }

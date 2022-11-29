@@ -12,7 +12,7 @@ public class EventField extends FieldParent
 {
     public final String fieldMime = ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE;
     @Expose
-    private LinkedList<EventContainer> events = new LinkedList<>();
+    private final LinkedList<EventContainer> events = new LinkedList<>();
 
     public EventField()
     {
@@ -41,7 +41,7 @@ public class EventField extends FieldParent
 
     public interface IEventField
     {
-        public LinkedList<EventContainer> getEvents();
+        LinkedList<EventContainer> getEvents();
     }
 
 }

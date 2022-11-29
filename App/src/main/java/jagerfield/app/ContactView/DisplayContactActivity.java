@@ -2,37 +2,43 @@ package jagerfield.app.ContactView;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.graphics.Palette;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.request.transition.Transition;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.hitesh.mobilecontactslibrary.R;
+
+import java.util.LinkedList;
+
+import jagerfield.app.ContactView.FieldAdapters.AddressViewAdapter;
+import jagerfield.app.ContactView.FieldAdapters.EmailViewAdapter;
+import jagerfield.app.ContactView.FieldAdapters.EventViewAdaptor;
+import jagerfield.app.ContactView.FieldAdapters.NoteViewAdaptor;
+import jagerfield.app.ContactView.FieldAdapters.NumberViewAdapter;
+import jagerfield.app.ContactView.FieldAdapters.WebsiteViewAdaptor;
+import jagerfield.app.Utilities.C;
+import jagerfield.mobilecontactslibrary.Contact.Contact;
 import jagerfield.mobilecontactslibrary.ElementContainers.AddressContainer;
 import jagerfield.mobilecontactslibrary.ElementContainers.EmailContainer;
 import jagerfield.mobilecontactslibrary.ElementContainers.EventContainer;
 import jagerfield.mobilecontactslibrary.ElementContainers.NoteContainer;
 import jagerfield.mobilecontactslibrary.ElementContainers.NumberContainer;
 import jagerfield.mobilecontactslibrary.ElementContainers.WebsiteContainer;
-import jagerfield.mobilecontactslibrary.Contact.Contact;
-import jagerfield.app.ContactView.FieldAdapters.NumberViewAdapter;
-import jagerfield.app.ContactView.FieldAdapters.AddressViewAdapter;
-import jagerfield.app.ContactView.FieldAdapters.EmailViewAdapter;
-import jagerfield.app.ContactView.FieldAdapters.EventViewAdaptor;
-import jagerfield.app.ContactView.FieldAdapters.NoteViewAdaptor;
-import jagerfield.app.ContactView.FieldAdapters.WebsiteViewAdaptor;
-import jagerfield.app.Utilities.C;
-import jagerfield.mobilecontactslibrary.R;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import java.util.LinkedList;
 
 public class DisplayContactActivity extends AppCompatActivity {
 
@@ -69,8 +75,7 @@ public class DisplayContactActivity extends AppCompatActivity {
         loadNoteField(contact);
     }
 
-    private void loadContactImage(String imageDir)
-    {
+    private void loadContactImage(String imageDir) {
         final ImageView imageView = (ImageView) findViewById(R.id.contactImage);
 
         bindfieldIcons();
@@ -82,19 +87,18 @@ public class DisplayContactActivity extends AppCompatActivity {
          * and when it is ready extract the colors.
          *
          */
-        Glide
-                .with(getApplicationContext())
-                .load(imageDir)
+        Glide.with(getApplicationContext())
                 .asBitmap()
+                .load(imageDir)
+
                 .into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
                     @Override
-                    public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                         imageView.setImageBitmap(resource);
 
                         Palette.Swatch color = C.getImageColor(C.VIBRANT, resource);
 
-                        if (color!=null)
-                        {
+                        if (color != null) {
                             /**
                              * Recolor the icons
                              */
@@ -105,8 +109,7 @@ public class DisplayContactActivity extends AppCompatActivity {
 
     }
 
-    private void recolorFieldIcons(Palette.Swatch color)
-    {
+    private void recolorFieldIcons(Palette.Swatch color) {
         ivName.setColorFilter(color.getRgb());
         ivNumber.setColorFilter(color.getRgb());
         ivAddress.setColorFilter(color.getRgb());
@@ -139,8 +142,7 @@ public class DisplayContactActivity extends AppCompatActivity {
         return contact;
     }
 
-    private void loadNamesField(Contact contact)
-    {
+    private void loadNamesField(Contact contact) {
         if (contact == null) {
             return;
         }
@@ -158,8 +160,12 @@ public class DisplayContactActivity extends AppCompatActivity {
 
         StringBuilder title = new StringBuilder();
 
-        if(fName) {title.append(contact.getFirstName() + " ");}
-        if(lName) {title.append(contact.getLastName());}
+        if (fName) {
+            title.append(contact.getFirstName() + " ");
+        }
+        if (lName) {
+            title.append(contact.getLastName());
+        }
 
         /**
          * Set activity's title to show contact first and last names
@@ -172,15 +178,11 @@ public class DisplayContactActivity extends AppCompatActivity {
 
     }
 
-    private boolean setViewState(TextView tv, String value)
-    {
-        if (value.trim().isEmpty())
-        {
+    private boolean setViewState(TextView tv, String value) {
+        if (value.trim().isEmpty()) {
             tv.setVisibility(View.GONE);
             return false;
-        }
-        else
-        {
+        } else {
             tv.setVisibility(View.VISIBLE);
             return true;
         }

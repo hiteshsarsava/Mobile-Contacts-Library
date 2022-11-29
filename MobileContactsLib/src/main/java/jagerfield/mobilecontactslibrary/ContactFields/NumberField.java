@@ -12,7 +12,7 @@ public class NumberField extends FieldParent
 {
     public final String fieldMime = ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE;
     @Expose
-    private LinkedList<NumberContainer> numbers = new LinkedList<>();
+    private final LinkedList<NumberContainer> numbers = new LinkedList<>();
 
     public NumberField()
     {
@@ -43,7 +43,7 @@ public class NumberField extends FieldParent
 
     public interface INumberField
     {
-        public LinkedList<NumberContainer> getNumbers();
+        LinkedList<NumberContainer> getNumbers();
     }
 
 }

@@ -13,7 +13,7 @@ import java.util.Set;
 public class NoteContainer
 {
     @Expose
-    private NoteElement note;
+    private final NoteElement note;
 
     public NoteContainer(Cursor cursor)
     {
@@ -29,8 +29,7 @@ public class NoteContainer
 
     public String getNote()
     {
-        String result = Utilities.elementValue(note);
-        return result;
+        return Utilities.elementValue(note);
     }
 
 }

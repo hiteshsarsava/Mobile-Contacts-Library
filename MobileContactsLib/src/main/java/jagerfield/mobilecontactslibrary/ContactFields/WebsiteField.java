@@ -12,7 +12,7 @@ public class WebsiteField extends FieldParent
 {
     public final String fieldMime = ContactsContract.CommonDataKinds.Website.CONTENT_ITEM_TYPE;
     @Expose
-    private LinkedList<WebsiteContainer> websites = new LinkedList<>();
+    private final LinkedList<WebsiteContainer> websites = new LinkedList<>();
 
     public WebsiteField()
     {
@@ -42,7 +42,7 @@ public class WebsiteField extends FieldParent
 
     public interface IWebsiteField
     {
-        public LinkedList<WebsiteContainer> getWebsites();
+        LinkedList<WebsiteContainer> getWebsites();
     }
 
 }

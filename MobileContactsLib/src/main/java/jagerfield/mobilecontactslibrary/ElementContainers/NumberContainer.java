@@ -2,25 +2,26 @@ package jagerfield.mobilecontactslibrary.ElementContainers;
 
 import android.database.Cursor;
 
+import com.google.gson.annotations.Expose;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import jagerfield.mobilecontactslibrary.FieldElements.NumberElements.LabelElement;
 import jagerfield.mobilecontactslibrary.FieldElements.NumberElements.NormNumElement;
 import jagerfield.mobilecontactslibrary.FieldElements.NumberElements.NumberElement;
 import jagerfield.mobilecontactslibrary.FieldElements.NumberElements.NumberTypeElement;
 import jagerfield.mobilecontactslibrary.Utilities.Utilities;
-import com.google.gson.annotations.Expose;
-import java.util.HashSet;
-import java.util.Set;
 
-public class NumberContainer
-{
+public class NumberContainer {
     @Expose
-    private NumberElement number;
+    private final NumberElement number;
     @Expose
-    private NormNumElement normalizedNumber;
+    private final NormNumElement normalizedNumber;
     @Expose
-    private NumberTypeElement numType;
+    private final NumberTypeElement numType;
     @Expose
-    private LabelElement numLabel;
+    private final LabelElement numLabel;
 
     public NumberContainer(Cursor cursor) {
         number = new NumberElement(cursor);
@@ -40,23 +41,22 @@ public class NumberContainer
 
     public String elementValue() {
 
-        String result = Utilities.elementValue(number);
-        return result;
+        return Utilities.elementValue(number);
     }
+
     public String getNormalizedNumber() {
 
-        String result = Utilities.elementValue(normalizedNumber);
-        return result;
+        return Utilities.elementValue(normalizedNumber);
     }
+
     public String getNumlabel() {
 
-        String result = Utilities.elementValue(numLabel);
-        return result;
+        return Utilities.elementValue(numLabel);
     }
+
     public String getNumType() {
 
-        String result = Utilities.elementValue(numType);
-        return result;
+        return Utilities.elementValue(numType);
     }
 
 

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-tools:context="com.example.sense.mobilecontactslibrary.jagerfield.libdemo.ContactView.DisplayContactActivity"
 tools:showIn="@layout/activity_display_contact">
 
 
@@ -14,7 +13,7 @@ tools:showIn="@layout/activity_display_contact">
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -104,7 +103,7 @@ tools:showIn="@layout/activity_display_contact">
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvNumbers"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -141,7 +140,7 @@ tools:showIn="@layout/activity_display_contact">
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -178,7 +177,7 @@ tools:showIn="@layout/activity_display_contact">
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -216,7 +215,7 @@ tools:showIn="@layout/activity_display_contact">
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvWebsite"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -254,7 +253,7 @@ tools:showIn="@layout/activity_display_contact">
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvEvent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -292,7 +291,7 @@ tools:showIn="@layout/activity_display_contact">
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvNote"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -310,8 +309,8 @@ tools:showIn="@layout/activity_display_contact">
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </FrameLayout>
 
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

@@ -45,20 +45,17 @@ public class NameField extends FieldParent {
 
     public String getDisplaydName()
     {
-        String result = Utilities.elementValue(displaydName);
-        return result;
+        return Utilities.elementValue(displaydName);
     }
 
     public String getFirstName()
     {
-        String result = Utilities.elementValue(firstName);
-        return result;
+        return Utilities.elementValue(firstName);
     }
 
     public String getLastName()
     {
-        String result = Utilities.elementValue(lastName);
-        return result;
+        return Utilities.elementValue(lastName);
     }
 
     public interface INameField extends DisplaydNameElement.IDisplaydNameElement, FirstNameElement.IFirstNameElement, LastNameElement.ILastNameElement {

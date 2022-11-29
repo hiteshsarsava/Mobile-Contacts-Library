@@ -1,7 +1,11 @@
 package jagerfield.mobilecontactslibrary.FieldElements.NumberElements;
 
 import android.database.Cursor;
+import android.os.Build;
 import android.provider.ContactsContract;
+
+import androidx.annotation.RequiresApi;
+
 import jagerfield.mobilecontactslibrary.Abstracts.ElementParent;
 import jagerfield.mobilecontactslibrary.Utilities.Utilities;
 import com.google.gson.annotations.Expose;

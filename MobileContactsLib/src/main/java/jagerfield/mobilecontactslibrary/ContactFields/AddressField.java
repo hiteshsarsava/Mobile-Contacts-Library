@@ -12,7 +12,7 @@ import java.util.Set;
 public class AddressField extends FieldParent {
     public final String fieldMime = ContactsContract.CommonDataKinds.StructuredPostal.CONTENT_ITEM_TYPE;
     @Expose
-    private LinkedList<AddressContainer> addressList = new LinkedList<>();
+    private final LinkedList<AddressContainer> addressList = new LinkedList<>();
 
     public AddressField() {
 
@@ -35,7 +35,7 @@ public class AddressField extends FieldParent {
     }
 
     public interface IAddressField {
-        public LinkedList<AddressContainer> getAddresses();
+        LinkedList<AddressContainer> getAddresses();
     }
 
 }

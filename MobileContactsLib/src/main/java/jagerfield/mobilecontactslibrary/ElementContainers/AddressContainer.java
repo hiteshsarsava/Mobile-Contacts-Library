@@ -11,11 +11,11 @@ import java.util.Set;
 
 public class AddressContainer
 {
-    private transient Cursor cursor;
+    private final transient Cursor cursor;
     @Expose
-    private AddressElement address;
+    private final AddressElement address;
     @Expose
-    private AddressTypeElement addressType;
+    private final AddressTypeElement addressType;
 
     public AddressContainer(Cursor cursor)
     {
@@ -32,13 +32,11 @@ public class AddressContainer
     }
 
     public String getAddress() {
-        String result = Utilities.elementValue(address);
-        return result;
+        return Utilities.elementValue(address);
     }
     public String getAddressType()
     {
-        String result = Utilities.elementValue(addressType);
-        return result;
+        return Utilities.elementValue(addressType);
     }
 
 }

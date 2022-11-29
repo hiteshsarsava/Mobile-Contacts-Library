@@ -2,13 +2,16 @@ package jagerfield.app;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.hitesh.mobilecontactslibrary.R;
+
 import jagerfield.app.ContactList.ListFragment.ContactListFragment;
 import jagerfield.app.Utilities.C;
-import jagerfield.mobilecontactslibrary.R;
 import jagerfield.utilities.lib.AppUtilities;
 import jagerfield.utilities.lib.PermissionsUtil.GuiDialog.PermissionsManager;
 import jagerfield.utilities.lib.PermissionsUtil.PermissionsUtil;
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-
+        super.onSaveInstanceState(outState);
     }
 
     private void launchFragment() {
@@ -66,23 +69,20 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
-    {
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         PermissionsUtil permissionsUtil = AppUtilities.getPermissionUtil(this);
 
-        if (requestCode == permissionsUtil.getPermissionsReqCodeId())
-        {
+        if (requestCode == permissionsUtil.getPermissionsReqCodeId()) {
             IGetPermissionResult result = null;
             result = permissionsUtil.getPermissionResults(permissions);
 
-            if (result.isGranted())
-            {
+            if (result.isGranted()) {
                 launchFragment();
                 return;
             }
 
-            PermissionsManager.getNewInstance(this, result, permissions, new PermissionsManager.PermissionsManagerCallback()
-            {
+            PermissionsManager.getNewInstance(this, result, permissions, new PermissionsManager.PermissionsManagerCallback() {
                 @Override
                 public void onPermissionsGranted(IGetPermissionResult result) {
 
@@ -93,8 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onPermissionsMissing(IGetPermissionResult result)
-                {
+                public void onPermissionsMissing(IGetPermissionResult result) {
                     Toast.makeText(MainActivity.this, "User didn't accept all permissions", Toast.LENGTH_LONG).show();
                 }
             });

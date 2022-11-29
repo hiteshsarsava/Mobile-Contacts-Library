@@ -12,7 +12,7 @@ public class NickNameField extends FieldParent
 {
     public final String fieldMime = ContactsContract.CommonDataKinds.Nickname.CONTENT_ITEM_TYPE;
     @Expose
-    private LinkedList<NickNameContainer> nickNames = new LinkedList<>();
+    private final LinkedList<NickNameContainer> nickNames = new LinkedList<>();
 
     public NickNameField() {
 
@@ -37,7 +37,7 @@ public class NickNameField extends FieldParent
     }
 
     public interface INickNameField {
-        public LinkedList<NickNameContainer> getNickNames();
+        LinkedList<NickNameContainer> getNickNames();
     }
 
 }

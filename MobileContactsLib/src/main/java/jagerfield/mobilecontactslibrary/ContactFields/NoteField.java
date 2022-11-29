@@ -14,7 +14,7 @@ public class NoteField extends FieldParent
     public final String fieldMime = ContactsContract.CommonDataKinds.Note.CONTENT_ITEM_TYPE;
 
     @Expose
-    private LinkedList<NoteContainer> notes = new LinkedList<>();
+    private final LinkedList<NoteContainer> notes = new LinkedList<>();
 
     public NoteField()
     {}
@@ -41,7 +41,7 @@ public class NoteField extends FieldParent
 
     public interface INoteField
     {
-        public LinkedList<NoteContainer> getNotes();
+        LinkedList<NoteContainer> getNotes();
     }
 
 }

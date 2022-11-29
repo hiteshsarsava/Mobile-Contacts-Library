@@ -3,9 +3,6 @@ package jagerfield.app.ContactList.ListFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,53 +10,53 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
-import jagerfield.mobilecontactslibrary.Contact.Contact;
-import jagerfield.app.ContactView.DisplayContactActivity;
-import jagerfield.app.Utilities.C;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.hitesh.mobilecontactslibrary.R;
+
 import java.util.ArrayList;
 
+import jagerfield.app.ContactView.DisplayContactActivity;
+import jagerfield.app.Utilities.C;
+import jagerfield.mobilecontactslibrary.Contact.Contact;
 import jagerfield.mobilecontactslibrary.ImportContactsAsync;
-import jagerfield.mobilecontactslibrary.R;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class ContactListFragment extends Fragment
-{
+public class ContactListFragment extends Fragment {
     private ContactListFragment contactListFragment;
     private RecyclerView recyclerView;
-    public ContactListFragment()
-    {}
+
+    public ContactListFragment() {
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contact_list, container, false);
 
-        if (view instanceof RecyclerView)
-        {
+        if (view instanceof RecyclerView) {
             Context context = view.getContext();
             recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
             contactListFragment = this;
 
-            new ImportContactsAsync(getActivity(), new ImportContactsAsync.ICallback()
-            {
+            new ImportContactsAsync(getActivity(), new ImportContactsAsync.ICallback() {
                 @Override
-                public void mobileContacts(ArrayList<Contact> contactList)
-                {
+                public void mobileContacts(ArrayList<Contact> contactList) {
                     ArrayList<Contact> listItem = contactList;
 
-                    if(listItem==null)
-                    {
-                        listItem = new ArrayList<Contact>() ;
+                    if (listItem == null) {
+                        listItem = new ArrayList<Contact>();
                         Log.i(C.TAG_LIB, "Error in retrieving contacts");
                     }
 
-                    if(listItem.isEmpty())
-                    {
+                    if (listItem.isEmpty()) {
                         Toast.makeText(getActivity(), "No contacts found", Toast.LENGTH_LONG).show();
                     }
 
@@ -93,26 +90,25 @@ public class ContactListFragment extends Fragment
             return new ViewHolder(view);
         }
 
+
         @Override
-        public void onBindViewHolder(final ContactListViewAdapter.ViewHolder holder, final int position) {
-            holder.vhContact = contactList.get(position);
+        public void onBindViewHolder(final ContactListViewAdapter.ViewHolder holder, int position) {
+
+            holder.vhContact = contactList.get(holder.getBindingAdapterPosition());
             holder.name.setText(holder.vhContact.getFirstName() + " " + holder.vhContact.getLastName());
 
-            String imageUri = contactList.get(position).getPhotoUri();
+            String imageUri = contactList.get(holder.getBindingAdapterPosition()).getPhotoUri();
             Glide.with(context)
                     .load(imageUri)
                     .error(R.drawable.person)
-                    .bitmapTransform(new CropCircleTransformation(context))
+                    .transform(new CropCircleTransformation(context))
                     .into(holder.image);
 
-            holder.mView.setOnClickListener(new View.OnClickListener()
-            {
+            holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v)
-                {
+                public void onClick(View v) {
 
-                    if (contactList ==null )
-                    {
+                    if (contactList == null) {
                         return;
                     }
 
@@ -121,7 +117,7 @@ public class ContactListFragment extends Fragment
                     GsonBuilder builder = new GsonBuilder();
                     builder.excludeFieldsWithoutExposeAnnotation();
                     Gson gsonBuilder = builder.create();
-                    String jsonContact = gsonBuilder.toJson(contactList.get(position));
+                    String jsonContact = gsonBuilder.toJson(contactList.get(holder.getBindingAdapterPosition()));
                     i.putExtra(C.CONTACT, jsonContact);
                     context.startActivity(i);
                 }

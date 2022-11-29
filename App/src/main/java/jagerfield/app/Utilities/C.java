@@ -1,7 +1,7 @@
 package jagerfield.app.Utilities;
 
 import android.graphics.Bitmap;
-import android.support.v7.graphics.Palette;
+import androidx.palette.graphics.Palette;
 
 public class C
 {
